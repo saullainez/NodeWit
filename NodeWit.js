@@ -4,6 +4,7 @@ const Wit = require('node-wit').Wit;//Llamamos a la librería Wit
 //Token de acceso de nuestra aplicación en Wit
 var ACCESS_TOKEN = "ZBWEIXAHRV7QFSNZCZWL2GTY6DME7CLF";
 exports.respuesta = "";
+exports.mejorIntencion = "";
 
 
 //Este método envía la frase a nuestra aplicación en Wit para obtener la data procesada por el PLN
@@ -18,7 +19,7 @@ exports.enviarFrase = function (frase, callback) {
       console.log('Mensaje recibido: "'+ data._text +'"');
       var intenciones = data.entities.intent;
       var maxConf = 0;
-      var mejorIntencion = "";
+      //var mejorIntencion = "";
       for (i = 0; i < intenciones.length; i++) {
         var confianza = intenciones[i].confidence;
         if (confianza > maxConf) {
@@ -34,7 +35,7 @@ exports.enviarFrase = function (frase, callback) {
             
             break;
       }
-      return callback(null, respuesta);
+      return callback(null, respuesta, mejorIntencion);
       
       //procesarFrase(data); //Llamamos al método que nos va a procesar esa respuesta para obtener la intención identificada por el PLN
     })

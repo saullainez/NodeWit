@@ -27,6 +27,7 @@ app.post('/frase', function (req, res) {
             if (err){
                 console.log(err);
             }else {
+                console.log("Intencion: " + mejorIntencion);
                 console.log("Respuesta: " + respuesta);
             }
         });
