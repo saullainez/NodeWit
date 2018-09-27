@@ -30,11 +30,16 @@ exports.enviarFrase = function (frase, callback) {
       console.log("Intención identificada: " + mejorIntencion);
       switch(mejorIntencion){
         case "Saludo":
-            respuesta = "Hola, qué tal";
-            console.log("Respuesta del bot: " + respuesta);
-            
-            break;
+          respuesta = "Hola, qué tal";
+          break;
+        case "Saludo matutino":
+          respuesta = "Buen día";
+          break;
+        case "Saludo vespertino":
+          respuesta = "Buenas tardes";
+          break;
       }
+      console.log("Respuesta del bot: " + respuesta);
       return callback(null, respuesta, mejorIntencion);
       
       //procesarFrase(data); //Llamamos al método que nos va a procesar esa respuesta para obtener la intención identificada por el PLN

@@ -11,9 +11,18 @@ app.use(express.static('public'));
 //app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}))
 
+
+app.set('views', __dirname + '/public/vistas');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+
 //El servidor muestra el index.html cuando se ingresa a la raíz del sitio
 app.get('/', function(req, res){
-    res.render('index.html');
+    var datos = {
+        Intencion: "",
+        Respuesta: ""
+    };
+    res.render('index.ejs', datos);
 });
 
 app.post('/frase', function (req, res) {
@@ -29,9 +38,15 @@ app.post('/frase', function (req, res) {
             }else {
                 console.log("Intencion: " + mejorIntencion);
                 console.log("Respuesta: " + respuesta);
+                var datos = {       
+                    Intencion: mejorIntencion,
+                    Respuesta: respuesta
+                };
+                res.render('index.ejs', datos);
+                console.log(datos);
             }
         });
-        res.redirect('index.html');
+        
     }
     
 
