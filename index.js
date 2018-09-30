@@ -9,7 +9,8 @@ var NodeWit = require('./NodeWit.js');
 //Usamos el framework "static" para usar ficheros estáticos (ejemplo imágenes, css, etc.) en nuestro proyecto
 app.use(express.static('public'));
 //app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 
 app.set('views', __dirname + '/public/vistas');
@@ -24,8 +25,33 @@ app.get('/', function(req, res){
     };
     res.render('index.ejs', datos);
 });
+app.get('/jq', function(req, res){
+    res.render('index2.html');
+});
 
-app.post('/frase', function (req, res) {
+app.post('/jq', function(req, res){
+    var frase = req.body.Frase
+    if (frase == undefined){
+        console.log("Frase no definida")
+    } else {
+        console.log("Frase: " + frase)
+        NodeWit.enviarFrase(frase, function(err){
+            if (err){
+                console.log(err);
+            } else {
+                console.log("Intención: " + mejorIntencion)
+                console.log("Respuesta: " + respuesta)
+                var datos = {
+                    Intencion: mejorIntencion,
+                    Respuesta: respuesta
+                }
+                res.json(datos);
+            }
+        })
+    }
+});
+
+app.post('/', function (req, res) {
     var frase = req.body.Frase
     if (frase == undefined){
         console.log("Frase sin definir");

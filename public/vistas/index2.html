@@ -86,23 +86,23 @@
         <div class="container">
             <section id="codigo" class="text-center">
                 <h2 class="mb-5 font-weight-bold">Probar el bot</h2>
-                <form action="/" method="POST" class="text-center border border-light p-5">
+                <form class="text-center border border-light p-5 formulario">
                     <div class="row">
                         <div class="col">
                             <div class="md-form mt-0">
-                                <label class="sr-only" for="frase">Frase</label>
-                                <input type="text" class="form-control mb-2 mr-sm-2 form-control-lg" id="Frase" placeholder="Escribe tu frase" name="Frase">
+                                <label class="sr-only" for="Frase">Frase</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2 form-control-lg Frase" id="Frase" placeholder="Escribe tu frase">
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-md mt-0 form-control-lg">Enviar frase</button>
+                        <button type="submit" class="btn btn-primary btn-md mt-0 form-control-lg boton">Enviar frase</button>
                     </div>
                     <div class="row">
-                        <div class="col-5" style="font-size: 1.3em;">
-                            <span>Intención identificada: <span style="color: goldenrod;"><%= Intencion %></span></span>
+                        <div class="col-5" style="font-size: 1.3em;" id="intencion">
+                            
                         </div>
-                        <div class="col-7" style="text-align: left; font-size: 1.3em;">
-                            <span>Respuesta del bot: <span style="color: green;"><%= Respuesta %></span></span>
+                        <div class="col-7" style="text-align: left; font-size: 1.3em;" id="respuesta">
+                            
                         </div>
                     </div>
                 </form> 
@@ -119,6 +119,7 @@
     </footer>
 
     <!-- SCRIPTS -->
+
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -127,5 +128,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.10/js/mdb.min.js"></script>
+    <script type="text/javascript" src="/js/postjq.js"></script>
 </body>
 </html>
