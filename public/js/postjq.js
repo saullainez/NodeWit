@@ -1,16 +1,22 @@
+//Esperamos a que cargue todo el DOM
 $(document).ready(function(){
-    //alert("Hola");
+    /*Capturamos el evento submit que genera el formulario, cuando el usuario presiona el botón de enviar.
+    En vez de que el submit envía la información al POST, nosotros ejecutamos la función ajaxPost.*/
     $(".formulario").submit(function(event){
+        /*Esto lo hacemos para que el formulario no realice su acción por defecto, cuando el usuario
+        presione el botón de enviar*/
         event.preventDefault();
-        ajaxPost();
+        ajaxPost();//En lugar de la acción por defecto (enviar los datos), se ejecuta esta función
     });
 
     function ajaxPost(){
+        //Obtenemos la frase que está en el HTML
         var formData = {
             Frase : $(".Frase").val()
         }
+        //Ejecutamos la petición ajax
         $.ajax({
-            type: "POST",
+            type: "POST", 
             contentType : "application/json",
             url : "/jq",
             data : JSON.stringify(formData),
