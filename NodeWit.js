@@ -38,6 +38,9 @@ exports.enviarFrase = function (frase, callback) {
         case "Saludo vespertino":
           respuesta = "Buenas tardes";
           break;
+        case "Saludo nocturno":
+          respuesta = "Buenas noches";
+          break;
       }
       console.log("Respuesta del bot: " + respuesta);
       return callback(null, respuesta, mejorIntencion);
