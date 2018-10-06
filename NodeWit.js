@@ -44,6 +44,9 @@ exports.enviarFrase = function (frase, callback) {
         case "Insulto":
           respuesta = "Así me hizo Dios";
           break;
+        case "Identidad":
+          respuesta = "Soy el bot más mera verga";
+          break;
       }
       console.log("Respuesta del bot: " + respuesta);
       return callback(null, respuesta, mejorIntencion);
