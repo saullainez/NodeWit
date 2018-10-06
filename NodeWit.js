@@ -41,6 +41,9 @@ exports.enviarFrase = function (frase, callback) {
         case "Saludo nocturno":
           respuesta = "Buenas noches";
           break;
+        case "Insulto":
+          respuesta = "Así me hizo Dios";
+          break;
       }
       console.log("Respuesta del bot: " + respuesta);
       return callback(null, respuesta, mejorIntencion);
