@@ -22,7 +22,7 @@ $(document).ready(function(){
             data : JSON.stringify(formData),
             dataType : 'json',
             success : function(resp){
-                $("#intencion").html("<span>" + "Intención identificada: " + "<span style='color: goldenrod;'>"+ resp.Intencion + "</span></span>")
+                //$("#intencion").html("<span>" + "Intención identificada: " + "<span style='color: goldenrod;'>"+ resp.Intencion + "</span></span>")
                 $("#respuesta").html("<span>" + "Respuesta del bot: " + "<span style='color: green;'>"+ resp.Respuesta + "</span></span>")
             },
             error : function(e) {

@@ -53,6 +53,9 @@ exports.enviarFrase = function (frase, callback) {
         case "Miguel":
           respuesta = "Uyy Miguelito, me gusta su pitido";
           break;
+        case "Creador":
+          respuesta = "Fui programado por la todopoderosa Liga de Maestros";
+          break;
       }
       console.log("Respuesta del bot: " + respuesta);
       return callback(null, respuesta, mejorIntencion);
