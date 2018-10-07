@@ -47,6 +47,12 @@ exports.enviarFrase = function (frase, callback) {
         case "Identidad":
           respuesta = "Soy el bot más mera verga";
           break;
+        case "Nombre":
+          respuesta = "Me llamo HectorBot";
+          break;
+        case "Miguel":
+          respuesta = "Uyy Miguelito, me gusta su pitido";
+          break;
       }
       console.log("Respuesta del bot: " + respuesta);
       return callback(null, respuesta, mejorIntencion);
