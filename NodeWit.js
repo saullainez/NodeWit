@@ -56,6 +56,8 @@ exports.enviarFrase = function (frase, callback) {
         case "Creador":
           respuesta = "Fui programado por la todopoderosa Liga de Maestros";
           break;
+        case "Hector":
+          respuesta = "Es el maestro, Héctor es Dios"
       }
       console.log("Respuesta del bot: " + respuesta);
       return callback(null, respuesta, mejorIntencion);
