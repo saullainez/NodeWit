@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>HectorBot</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.10/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!--Main Navigation-->
+    <header>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+            <div class="container">
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="#">HectorBot</a>
+                <!-- Collapse button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="basicExampleNav">
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto smooth-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/jq">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#codigo">Probar el bot</a>
+                        </li>
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="#examples">Examples</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#gallery">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                        -->
+                    </ul>
+                    <!-- Links -->
+                <!-- Collapsible content -->
+            </div>
+        </nav>
+        <!--/.Navbar-->
+        <!--Mask-->
+        <div id="intro" class="view">
+            <div class="mask rgba-black-strong">
+                <div class="container-fluid d-flex align-items-center justify-content-center h-50">
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-md-10">
+                            <!-- Heading -->
+                            <h2 class="display-4 font-weight-bold white-text pt-5 mb-2 HB">HectorBot</h2>
+                            <!-- Divider -->
+                            <hr class="hr-light HL">
+                            <div class="HBimg">
+                                <img src="http://oi66.tinypic.com/zo832t.jpg" alt="">
+                            </div>
+                            <!-- Description -->
+                            <!--<h4 class="white-text my-4">Chupame la pija, maestro.</h4>-->
+                            <!--<div class="container-fluid d-flex align-items-center justify-content-center h-100">
+                                <button type="button" class="btn btn-outline-white">Saber más<i class="fa fa-book ml-2"></i></button>
+                            </div>-->
+                            <div class="abajo">
+                                <a href="#codigo"><img src="http://oi64.tinypic.com/2qbroly.jpg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.Mask-->
+    </header>
+    <main class="mt-5">
+        <div class="container">
+            <section id="codigo" class="text-center">
+                <h2 class="mb-5 font-weight-bold">Probar el bot</h2>
+                <form class="text-center border border-light p-5 formulario" id="formulario" method="POST" v-on:submit.prevent="enviarFrase">
+                    <div class="row">
+                        <div class="col">
+                            <div class="md-form mt-0">
+                                <label class="sr-only" for="Frase">Frase</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2 form-control-lg Frase" id="Frase" name="Frase" v-model = "frase" placeholder="Escribe tu frase">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-md mt-0 form-control-lg boton">Enviar frase</button>
+                    </div>
+                    <div class="row">
+                        <!--<div class="col-5" style="font-size: 1.3em;" id="intencion">
+                            
+                        </div>-->
+                        <div class="col-12" style="text-align: left; font-size: 1.3em;" v-if="visible">
+                            <span>Respuesta del bot: <span style="color: green;">{{ respuesta }}</span>
+                        </div>
+                    </div>
+                </form> 
+            </section>
+        </div>
+    </main>
+
+    <footer class="page-footer font-small unique-color-dark pt-0">
+        <div class="container mt-5 mb-4 text-center text-md-left">
+            <div class="footer-copyright py-3 text-center">
+                <span>© 2018 Copyright:</span><a href="#"> HectorBot </a>
+            </div> 
+        </div> 
+    </footer>
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.10/js/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="/js/postvue.js"></script>
+</body>
+</html>

@@ -110,6 +110,49 @@ app.post('/jq', function(req, res){
     }
 });
 
+
+//Rutas del GET y POST utilizando Vue y axios
+//Get para mostrar el index con el que haremos el POST usando vue, no el formulario,ni JQuery
+app.get('/vue', function(req, res){
+    //Simplemente mostramos la vista
+    res.render('index3.html');
+});
+
+//POST utilizando ajax, no el formulario
+app.post('/vue', function(req, res){
+    console.log("Vue");
+    /*Obtenemos la frase que viene en la petición, en este caso, el JSON que enviamos en el cliente
+    con el script postjq.js por esta razón también usamos bodyParser.json()*/
+    var frase = req.body.frase
+    /*El proceso es el mismo que seguimos cuando hacemos el POST usando el formulario, salvo una excepción
+    que se detalla más adelante*/
+    if (frase == undefined){
+        console.log("Frase no definida")
+    } else {
+        console.log("Frase: " + frase)
+        NodeWit.enviarFrase(frase, function(err){
+            if (err){
+                console.log(err);
+            } else {
+                console.log("Intención: " + mejorIntencion)
+                console.log("Respuesta: " + respuesta)
+                var datos = {
+                    Intencion: mejorIntencion,
+                    Respuesta: respuesta
+                }
+                /*Única diferencia con el proceso usado cuando hacemos POST con el formulario.
+                En lugar de mostrar una vista como respuesta, enviamos un JSON con la variable datos, 
+                que contiene la intención encontrada y la respuesta del bot.
+                Esto es mejor ya que definimos un recurso que luego puede ser consumido por otra aplicación
+                o método, al mostrar una vista, la respuesta queda muy estricta ya que no podrá ser consumida
+                por otra aplicación o recurso.
+                Esta funcionalidad se puede probar utilizando POSTMAN*/
+                res.json(datos);
+            }
+        })
+    }
+});
+
 //Ejecutamos el servidor
 app.listen(process.env.PORT || 8080, function(){
     console.log("Servidor corriendo en http://localhost:8080");
