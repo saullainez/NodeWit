@@ -68,6 +68,9 @@ exports.enviarFrase = function (frase, callback) {
         case "Pulpero":
           respuesta = "Mi verdadera vocación";
           break;
+        case "InsultoSi":
+          respuesta = "Sí lo soy";
+          break;
       }
       console.log("Respuesta del bot: " + respuesta);
       return callback(null, respuesta, mejorIntencion);
