@@ -57,7 +57,17 @@ exports.enviarFrase = function (frase, callback) {
           respuesta = "Fui programado por la todopoderosa Liga de Maestros";
           break;
         case "Hector":
-          respuesta = "Es el maestro, Héctor es Dios"
+          respuesta = "Es el maestro, Héctor es Dios";
+          break;
+        case "Mediocre":
+          respuesta = "Sos más mediocre vos, HDP";
+          break;
+        case "Cosita":
+          respuesta = "Ella es mi media toronja";
+          break;
+        case "Pulpero":
+          respuesta = "Mi verdadera vocación";
+          break;
       }
       console.log("Respuesta del bot: " + respuesta);
       return callback(null, respuesta, mejorIntencion);
