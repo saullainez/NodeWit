@@ -98,9 +98,9 @@
                         <button type="submit" class="btn btn-primary btn-md mt-0 form-control-lg boton">Enviar frase</button>
                     </div>
                     <div class="row">
-                        <!--<div class="col-5" style="font-size: 1.3em;" id="intencion">
-                            
-                        </div>-->
+                        <div class="col-12" style="font-size: 1.5em;" v-if="verror">
+                            <span v-model="error" class="text-danger">{{ error }}</span>
+                        </div>
                         <div class="col-12" style="text-align: left; font-size: 1.3em;" v-if="visible">
                             <span>Respuesta del bot: <span style="color: green;">{{ respuesta }}</span>
                         </div>
