@@ -19,14 +19,20 @@ exports.enviarFrase = function (frase, callback) {
       console.log('Mensaje recibido: "'+ data._text +'"');
       var intenciones = data.entities.intent;
       var maxConf = 0;
-      //var mejorIntencion = "";
-      for (i = 0; i < intenciones.length; i++) {
-        var confianza = intenciones[i].confidence;
-        if (confianza > maxConf) {
-            maxConf = confianza;
-            mejorIntencion = intenciones[i].value;
+      if(intenciones){
+        for (i = 0; i < intenciones.length; i++) {
+          var confianza = intenciones[i].confidence;
+          if (confianza > maxConf) {
+              maxConf = confianza;
+              mejorIntencion = intenciones[i].value;
+          }
         }
+      }else {
+        mejorIntencion = "";
+        respuesta = "";
       }
+      //var mejorIntencion = "";
+
       console.log("Intención identificada: " + mejorIntencion);
       switch(mejorIntencion){
         case "Saludo":

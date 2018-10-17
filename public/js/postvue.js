@@ -3,11 +3,16 @@ var app = new Vue({
     data:{
         visible: false,
         verror: false,
+        agregarFrase: false,
+        habFrase: true,
         frase: '',
         errores: [],
         error: '',
         intencion: '',
         respuesta: '',
+        intenciones: [],
+        seleccionado: '',
+        msgIntencion: '',
     },
     methods: {
         enviarFrase: function(){
@@ -16,12 +21,29 @@ var app = new Vue({
                 axios.post(url, {
                     frase: this.frase
                 }).then(response => {
-                    this.visible = true;
                     this.verror = false;
-                    this.frase = '';
+                    this.agregarFrase = false;
                     this.errores = [];
-                    intencion = response.data.intencion;
-                    this.respuesta = response.data.Respuesta;
+                    this.intencion = response.data.Intencion;
+                    if (this.intencion){
+                        this.visible = true;
+                        this.respuesta = response.data.Respuesta;
+                    }else {
+                        this.error = "Intención no identificada";
+                        this.visible = false;
+                        this.verror = true;
+                        this.agregarFrase = true;
+                        this.habFrase = false;
+                        this.obtenerIntenciones();
+                        /*if(this.seleccionado){
+                            this.msgIntencion = "Intención seleccionada" + seleccionado;
+                        } else {
+                            this.msgIntencion = "Seleccione una intención";
+                        }*/
+                    }
+
+                    //this.frase = '';
+
                 }).catch(error => {
                     this.errores = error.response.data
                 });           
@@ -29,8 +51,31 @@ var app = new Vue({
                 this.error = "No seas como el maestro, escribí algo para enviar al Bot";    
                 this.visible = false;
                 this.verror = true; 
+                this.agregarFrase = false;
             }
             
+        },
+        habilitar: function(){
+            this.habFrase = true;
+            this.agregarFrase = false;
+            this.verror = false;
+            this.frase = "";
+        },
+        obtenerIntenciones: function(){
+            this.intenciones = [];
+            var url = 'https://api.wit.ai/entities/intent?v=20181011';
+            axios.get(url, {
+                'headers': {'Authorization': 'Bearer ZBWEIXAHRV7QFSNZCZWL2GTY6DME7CLF'}
+            }).then(response =>{
+                for (var i = 0; i < response.data.values.length; i++){
+                    this.intenciones.push(response.data.values[i].value); 
+                    //this.pre = response.data.values[i].value;
+                }
+                //this.pre = response.data.values[1].value;
+            }).catch(error => {
+                this.errores = error.response.data
+            });   
         }
     }
+
 })
