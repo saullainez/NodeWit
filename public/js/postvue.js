@@ -98,7 +98,15 @@ var app = new Vue({
             }
             axios.post(url, body, config
             ).then(response =>{
-                this.response = response.data;
+                if (response.data.sent || response.data.n == 1){
+                    
+                    this.response = "Se ha agregado con éxito la frase: " + this.frase + " a la intención: " + this.seleccionado;
+
+                }else{
+                    this.error = "Se ha producido un error al agregar la frase";
+                    this.verror = true;
+                }
+                
                 //this.response = response.data.error;
                 //console.log(response.data.sent);
             }).catch(error => {
