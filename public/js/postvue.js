@@ -13,6 +13,7 @@ var app = new Vue({
         intenciones: [],
         seleccionado: '',
         msgIntencion: '',
+        response: '',
     },
     methods: {
         enviarFrase: function(){
@@ -34,6 +35,8 @@ var app = new Vue({
                         this.verror = true;
                         this.agregarFrase = true;
                         this.habFrase = false;
+                        this.seleccionado = "";
+                        this.response = "";
                         this.obtenerIntenciones();
                         /*if(this.seleccionado){
                             this.msgIntencion = "Intención seleccionada" + seleccionado;
@@ -75,7 +78,35 @@ var app = new Vue({
             }).catch(error => {
                 this.errores = error.response.data
             });   
+        },
+        anadirIntencion: function(){
+            var url = 'https://api.wit.ai/samples?v=20181011';
+            var body = [{
+                text: this.frase,
+                entities: [
+                  {
+                    entity: "intent",
+                    value: this.seleccionado
+                  }
+                ]
+            }]
+            var config = {
+                headers: {
+                    'Authorization': 'Bearer ZBWEIXAHRV7QFSNZCZWL2GTY6DME7CLF',
+                    'Content-Type': 'application/json'
+                }
+            }
+            axios.post(url, body, config
+            ).then(response =>{
+                this.response = response.data;
+                //this.response = response.data.error;
+                //console.log(response.data.sent);
+            }).catch(error => {
+                this.errores = error.response.data
+            }); 
+            
         }
+
     }
 
 })

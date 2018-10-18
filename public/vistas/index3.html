@@ -83,10 +83,10 @@
         <!--/.Mask-->
     </header>
     <main class="mt-5">
-        <div class="container">
+        <div class="container" id="formulario">
             <section id="codigo" class="text-center">
                 <h2 class="mb-5 font-weight-bold">Probar el bot</h2>
-                <form class="text-center border border-light p-5 formulario" id="formulario" method="POST" v-on:submit.prevent="enviarFrase">
+                <form class="text-center border border-light p-5">
                     <div class="container">
                         <div class="row md-form mt-0">
                             <div class="col-lg-9 col-md-7 col-12">
@@ -94,7 +94,7 @@
                                 <input type="text" class="form-control form-control-lg" id="Frase" name="Frase"  v-model = "frase" placeholder="Escribe tu frase" :disabled="!habFrase">
                             </div>
                             <div class="col-lg-3 col-md-5 col-12">
-                                <button type="submit" class="btn btn-primary btn-md mt-0 form-control-lg boton">Enviar frase</button>
+                                <button class="btn btn-primary btn-md mt-0 form-control-lg boton" @click.prevent="enviarFrase">Enviar frase</button>
                             </div>
                         </div>
                     </div>
@@ -123,9 +123,9 @@
                                 <!--<span v-model="msgIntencion">{{ msgIntencion }}</span>-->
                                 <span>Intención seleccionada: {{ seleccionado }}</span>
                             </div>
-                            
+                            <span v-model="response">{{ response }}</span>
                             <div style="margin-top:2%;">
-                                <button class="btn btn-primary btn-md mt-0 form-control-lg" v-if="seleccionado">Agregar frase</button>
+                                <button class="btn btn-primary btn-md mt-0 form-control-lg" v-if="seleccionado" @click.prevent="anadirIntencion">Agregar frase</button>
                                 <button class="btn btn-primary btn-md mt-0 form-control-lg" @click.prevent="habilitar">Seguir probando el bot</button>
                             </div>
                         </div>
